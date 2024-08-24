@@ -1,0 +1,112 @@
+<div class="prod-container">
+    <form action="" (ngSubmit)="onSubmit()" name="productForm" [formGroup]="productForm">
+      <h2>Create a new product</h2>
+      <div class="mb-3">
+        <label for="pid" class="form-label">Product ID</label>
+        <input
+          formControlName="productId"
+          type="text"
+          name="pid"
+          id="pid"
+          class="form-control"
+          placeholder="p01"
+          required    
+        />
+        <!-- Validation in form builder or reactive forms can be done like this, getter method required-->
+        <div *ngIf="productId.invalid && (productId.touched || productId.dirty) " class="alert">
+          <div *ngIf="productId.errors?.['required']">Product ID can't be empty</div>
+          <div *ngIf="productId.errors?.['minlength']">
+            Product ID must be atleast 4 characters long
+          </div>
+        </div>
+      </div>
+      <div class="mb-3" formGroupName="description">
+        <label for="age" class="form-label">Age</label>
+        <input
+          formControlName="age"
+          type="number"
+          name="age"
+          id="age"
+          class="form-control"
+        />
+        <label for="season" class="form-label">Season</label>
+        <input
+          formControlName="season"
+          type="text"
+          name="season"
+          id="season"
+          class="form-control"
+        />
+        <div class="alert" *ngIf="season.invalid && (season.touched || season.dirty)">
+          <div *ngIf="season.errors?.['required']">Season can't be empty</div>
+          <div *ngIf="season.errors?.['minlength']">
+            Season must be 4 characters long
+          </div>
+        </div>
+      </div>
+      <div formArrayName="suppliers">
+            <div class="mb-3" id="suppliers">
+                <div *ngFor="let supplier of suppliers.controls; let i = index">
+                    <div class="mb-3">
+                        <label for="">field {{i}}</label>
+                        <input type="text" [formControlName]="i" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <input type="button" (click)="addNewSupplier()" value="Add New Supplier" class="btn btn-primary"/>
+
+      </div>
+      <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <input
+          formControlName="price"
+          type="number"
+          name="price"
+          id="price"
+          class="form-control"
+          placeholder="1000"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="brand" class="form-label">Brand</label>
+        <input
+          formControlName="brand"
+          type="text"
+          name="brand"
+          id="brand"
+          class="form-control"
+          placeholder="NexPro"
+          required
+        />
+        <!-- <div
+          class="alert"
+          *ngIf="brand.invalid && (brand.touched || brand.dirty)"
+        >
+          <div *ngIf="brand.errors?.['required']">brand must be prvided</div>
+        </div> -->
+      </div>
+      <div class="mb-3">
+        <label for="qty" class="form-label">Quantity</label>
+        <input
+          formControlName="qty"
+          type="number"
+          name="qty"
+          id="qty"
+          class="form-control"
+          placeholder="Gastro"
+          required
+        />
+        <!-- <div
+          class="alert"
+          *ngIf="qty.invalid && (qty.touched || qty.dirty)"
+        >
+          <div *ngIf="qty.errors?.['required']">
+            qty must be provided
+          </div>
+        </div> -->
+      </div>
+  
+      <input type="submit" class="btn btn-primary" value="Add" [disabled]="!productForm.valid" />
+    </form>
+  </div>
+  

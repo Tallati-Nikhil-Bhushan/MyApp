@@ -1,0 +1,37 @@
+<!-- <div [ngStyle]="{ 'background-color': selectedColor }" class="color-box">
+    <p>The background color is {{ selectedColor }}</p>
+  
+    <label>
+      <input type="radio" name="color" value="red" (change)="changeColor('red')" />
+      Red
+    </label>
+    <label>
+      <input type="radio" name="color" value="green" (change)="changeColor('green')" />
+      Green
+    </label>
+    <label>
+      <input type="radio" name="color" value="blue" (change)="changeColor('blue')" />
+      Blue
+    </label>
+
+    <div>
+      <label for="city">Select city:</label>
+      <select id="city" [(ngModel)]="selectedCity" (change)="onCityChange()">
+        <option *ngFor="let city of cityList" [value]="city">{{ city }}</option>
+      </select>
+    </div>
+    
+    <div *ngIf="state && country">
+      <p>State: {{ state }}</p>
+      <p>Country: {{ country }}</p>
+    </div>
+</div>
+  
+   -->
+
+<div class="container">
+  <input type="text" name="color" id="color" (keydown)="keyCapture($event.key)">
+  <h2>{{key}}</h2>
+</div>
+
+

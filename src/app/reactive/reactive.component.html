@@ -1,0 +1,42 @@
+<div class="card-body">
+    <h1 class="card-title mb-3">Product Form</h1>
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="validated-form" novalidate>
+        <div class="mb-3">
+            <label class="form-label" for="productId">productId</label>
+            <input class="form-control" type="text" formControlName="productId" id="productId" name="productId"/>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="brand">brand</label>
+            <input class="form-control" type="text" formControlName="brand" id="brand" name="brand"/>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="price">price</label>
+            <input class="form-control" type="number" formControlName="price" id="price" name="price"/>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="description">description</label>
+            <input class="form-control" type="text" formControlName="description" id="description" name="description"/>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="qty">quantity</label>
+            <input class="form-control" type="number" formControlName="qty" id="qty" name="qty"/>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <button class="btn btn-success btn-block" [disabled]="!productForm.valid" >Submit</button>
+    </form>
+</div>
